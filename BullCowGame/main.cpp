@@ -50,7 +50,7 @@ void PrintIntro()
     return;
 }
 
-void PlayGame()
+void PlayGame() 
 {
     BCGame.Reset();
     int32 MaxTries = BCGame.GetMaxTries();

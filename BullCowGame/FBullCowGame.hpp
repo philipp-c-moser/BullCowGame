@@ -28,7 +28,7 @@ enum class EGuessStatus
   Not_Isogram,
   Wrong_Length,
   Not_Lowercase
-};
+}; 
 
     
 #endif /* FBullCowGame_hpp */

@@ -12,18 +12,31 @@
 #include <stdio.h>
 #include <string>
 
+using FString = std::string;
+using int32 = int;
+
+struct FBullCowCount
+{
+    int32 Bulls = 0;
+    int32 Cows = 0;
+};
+
+    
 #endif /* FBullCowGame_hpp */
 
 
 class FBullCowGame {
 public:
     FBullCowGame(); // constructor
-    int GetMaxTries() const;
-    int GetCurrentTry() const;
+    int32 GetMaxTries() const;
+    int32 GetCurrentTry() const;
     bool IsGameWon() const;
     
     void Reset();
-    bool CheckGuessValidity(std::string);
+    bool CheckGuessValidity(FString);
+    
+    // counts bulls & cows and increases try # assuming valid guess
+    FBullCowCount SubmitGuess(FString);
     
     
     
@@ -31,7 +44,7 @@ public:
     
 // Please try and ignore this and focus on the interface above
 private:
-    int MyCurrentTry = 1;
-    int MyMaxTries = 5;
-    
+    int32 MyCurrentTry = 1;
+    int32 MyMaxTries = 5;
+    FString MyHiddenWord;
 };

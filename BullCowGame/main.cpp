@@ -43,7 +43,7 @@ int main()
 // introduce the game
 void PrintIntro()
 {
-    std::cout << "Welcome to Bulls and Cows\n";
+    std::cout << "\n\nWelcome to Bulls and Cows\n";
     std::cout << "Can you guess the " << BCGame.GetHiddenWordLength();
     std::cout << " letter isogram I'm thinking of?\n";
     std::cout << std::endl;
@@ -55,17 +55,17 @@ void PlayGame()
     BCGame.Reset();
     int32 MaxTries = BCGame.GetMaxTries();
     
-    // loop for the number of turns asking for guesses
-    // TODO change from FOR to WHILE loop once we are validating tries
+    // loop asking for guesses while the game is not won
+    // and there are still tries remaining
     
-    for (int32 count = 1; count <= MaxTries; count++) { // TODO make loop checking valid
+    while (!BCGame.IsGameWon() && BCGame.GetCurrentTry() <= MaxTries) { 
         FText Guess = GetValidGuess();
     
         
         
         
         // submit valid guess to the game
-        FBullCowCount BullCowCount = BCGame.SubmitGuess(Guess);
+        FBullCowCount BullCowCount = BCGame.SubmitValidGuess(Guess);
         
         std::cout << "Bulls = " << BullCowCount.Bulls;
         std::cout << ". Cows = " << BullCowCount.Cows << "\n\n";
@@ -78,6 +78,7 @@ void PlayGame()
 // loop until the user gives a valid guess
 FText GetValidGuess()
 {
+    FText Guess = "";
     EGuessStatus Status = EGuessStatus::Invalid_Status;
 
     do {
@@ -85,7 +86,7 @@ FText GetValidGuess()
         
         // get the users input
         std::cout << "Try " << CurrentTry << ". Enter your guess: ";
-        FText Guess = "";
+        
         std::getline(std::cin, Guess);
         
         // check status and give feedback
@@ -102,13 +103,13 @@ FText GetValidGuess()
                 std::cout << "Please enter a isogram.\n";
                 break;
             default:
-                return Guess;
-                
+                // assuming the guess is valid
+                break;
         }
         std::cout << std::endl;
     } while (Status != EGuessStatus::OK); // keep looping until we get no errors
     
-    
+    return Guess;
     
 }
 

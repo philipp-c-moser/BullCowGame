@@ -9,6 +9,7 @@
 
 // Converting to UnrealSyntax
 using FText = std::string;
+using int32 = int;
 
 
 // Initialize
@@ -42,9 +43,8 @@ int main()
 // introduce the game
 void PrintIntro()
 {
-    constexpr int WORD_LENGTH = 5;
     std::cout << "Welcome to Bulls and Cows\n";
-    std::cout << "Can you guess the " << WORD_LENGTH;
+    std::cout << "Can you guess the " << BCGame.GetHiddenWordLength();
     std::cout << " letter isogram I'm thinking of?\n";
     std::cout << std::endl;
     return;
@@ -53,12 +53,12 @@ void PrintIntro()
 void PlayGame()
 {
     BCGame.Reset();
-    int MaxTries = BCGame.GetMaxTries();
+    int32 MaxTries = BCGame.GetMaxTries();
     
     // loop for the number of turns asking for guesses
     // TODO change from FOR to WHILE loop once we are validating tries
     
-    for (int count = 1; count <= MaxTries; count++)
+    for (int32 count = 1; count <= MaxTries; count++)
     {
         FText Guess = GetGuess(); // TODO make loop checking valid
         
@@ -76,7 +76,7 @@ void PlayGame()
 
 FText GetGuess()
 {
-    int CurrentTry = BCGame.GetCurrentTry();
+    int32 CurrentTry = BCGame.GetCurrentTry();
     
     // get the users input
     std::cout << "Try " << CurrentTry << ". Enter your guess: ";

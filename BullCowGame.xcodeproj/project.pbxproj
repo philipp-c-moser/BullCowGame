@@ -61,8 +61,8 @@
 			isa = PBXGroup;
 			children = (
 				A31477B41FD8870E00A9FB14 /* main.cpp */,
-				A31477C01FDB39CF00A9FB14 /* FBullCowGame.cpp */,
 				A31477C11FDB39CF00A9FB14 /* FBullCowGame.hpp */,
+				A31477C01FDB39CF00A9FB14 /* FBullCowGame.cpp */,
 			);
 			path = BullCowGame;
 			sourceTree = "<group>";

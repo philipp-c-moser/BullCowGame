@@ -19,7 +19,7 @@ int32 FBullCowGame::GetHiddenWordLength() const { return MyHiddenWord.length(); 
 void FBullCowGame::Reset()
 {
     constexpr int32 MAX_TRIES = 8;
-    const FString HIDDEN_WORD = "philipp";
+    const FString HIDDEN_WORD = "planet";
     
     MyMaxTries = MAX_TRIES;
     MyHiddenWord = HIDDEN_WORD;
@@ -34,10 +34,9 @@ bool FBullCowGame::IsGameWon() const
     return false;
 }
 
-bool FBullCowGame::CheckGuessValidity(FString) const // TODO get more specific
+EWordStatus FBullCowGame::CheckGuessValidity(FString) const // TODO get more specific
 {
-    MyCurrentTry++;
-    return false;
+    return EWordStatus::OK;
 }
 
 // receives a VALID guess, increments turn and return 

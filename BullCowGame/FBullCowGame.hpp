@@ -21,6 +21,14 @@ struct FBullCowCount
     int32 Cows = 0;
 };
 
+enum class EWordStatus
+{
+  OK,
+  Not_Isogram,
+  Wrong_Length,
+  Not_Lowercase
+};
+
     
 #endif /* FBullCowGame_hpp */
 
@@ -34,7 +42,7 @@ public:
     bool IsGameWon() const;
     
     void Reset();
-    bool CheckGuessValidity(FString) const;
+    EWordStatus CheckGuessValidity(FString) const;
     
     // counts bulls & cows and increases try # assuming valid guess
     FBullCowCount SubmitGuess(FString);

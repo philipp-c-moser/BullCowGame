@@ -29,6 +29,7 @@ void FBullCowGame::Reset()
 
 bool FBullCowGame::IsGameWon() const
 {
+    // Needs to be defined
     return false;
 }
 

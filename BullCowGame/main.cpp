@@ -7,7 +7,7 @@
 #include <iostream>
 #include "FBullCowGame.hpp"
 
-
+// Converting to UnrealSyntax
 using FText = std::string;
 using int32 = int;
 

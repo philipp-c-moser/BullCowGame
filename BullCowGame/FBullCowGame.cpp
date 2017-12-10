@@ -10,7 +10,7 @@
 
 FBullCowGame::FBullCowGame() { Reset(); }
 
-// Getter Methods
+// Getter Methods 
 int32 FBullCowGame::GetMaxTries() const { return MyMaxTries; }
 int32 FBullCowGame::GetCurrentTry() const { return MyCurrentTry; }
 int32 FBullCowGame::GetHiddenWordLength() const { return MyHiddenWord.length(); }

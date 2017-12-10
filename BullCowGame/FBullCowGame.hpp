@@ -13,11 +13,12 @@
 #include <string>
 
 using FString = std::string;
+using int32 = int;
 
 struct FBullCowCount
 {
-    int Bulls = 0;
-    int Cows = 0;
+    int32 Bulls = 0;
+    int32 Cows = 0;
 };
 
     
@@ -27,8 +28,8 @@ struct FBullCowCount
 class FBullCowGame {
 public:
     FBullCowGame(); // constructor
-    int GetMaxTries() const;
-    int GetCurrentTry() const;
+    int32 GetMaxTries() const;
+    int32 GetCurrentTry() const;
     bool IsGameWon() const;
     
     void Reset();
@@ -43,7 +44,7 @@ public:
     
 // Please try and ignore this and focus on the interface above
 private:
-    int MyCurrentTry = 1;
-    int MyMaxTries = 5;
+    int32 MyCurrentTry = 1;
+    int32 MyMaxTries = 5;
     FString MyHiddenWord;
 };

@@ -11,13 +11,13 @@
 FBullCowGame::FBullCowGame() { Reset(); }
 
 // Getter Methods
-int FBullCowGame::GetMaxTries() const { return MyMaxTries; }
-int FBullCowGame::GetCurrentTry() const { return MyCurrentTry; }
+int32 FBullCowGame::GetMaxTries() const { return MyMaxTries; }
+int32 FBullCowGame::GetCurrentTry() const { return MyCurrentTry; }
 
 
 void FBullCowGame::Reset()
 {
-    constexpr int MAX_TRIES = 8;
+    constexpr int32 MAX_TRIES = 8;
     MyMaxTries = MAX_TRIES;
     
     const FString HIDDEN_WORD = "ant";
@@ -47,12 +47,12 @@ FBullCowCount FBullCowGame::SubmitGuess(FString Guess)
     
     // setup a return variable
     FBullCowCount BullCowCount;
-    int HiddenWordLength = MyHiddenWord.length();
+    int32 HiddenWordLength = MyHiddenWord.length();
     
     // loop throught all letters in the guess
-    for (int i = 0; i < HiddenWordLength; i++) {
+    for (int32 i = 0; i < HiddenWordLength; i++) {
         // compare letters against the hidden word.
-        for (int j = 0; j < HiddenWordLength; j++) {
+        for (int32 j = 0; j < HiddenWordLength; j++) {
             if(Guess[i] == MyHiddenWord[i]) { // if they match then
                 
                 if( i == j) { // if they're in the same place

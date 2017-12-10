@@ -14,7 +14,7 @@ using int32 = int;
 
 // Initialize
 void PrintIntro();
-FText GetGuess();
+FText GetValidGuess();
 void PrintGuess(FText GetGuess);
 void PlayGame();
 bool AskToPlayAgain();
@@ -59,9 +59,8 @@ void PlayGame()
     // TODO change from FOR to WHILE loop once we are validating tries
     
     for (int32 count = 1; count <= MaxTries; count++) { // TODO make loop checking valid
-        FText Guess = GetGuess();
-    
-        EGuessStatus Status = BCGame.CheckGuessValidity(Guess);
+        FText Guess = GetValidGuess();
+        
         
         // submit valid guess to the game
         FBullCowCount BullCowCount = BCGame.SubmitGuess(Guess);
@@ -76,18 +75,33 @@ void PlayGame()
 }
 
 
-// TODO change to GetValidGuess
-FText GetGuess()
+// loop until the user gives a valid guess
+FText GetValidGuess()
 {
-    int32 CurrentTry = BCGame.GetCurrentTry();
+    EGuessStatus Status = EGuessStatus::Invalid_Status;
+    do{
+        // get a guess from the player
+        int32 CurrentTry = BCGame.GetCurrentTry();
+        std::cout << "Try " << CurrentTry << ". Enter your guess: ";
+        FText Guess = "";
+        std::getline(std::cin, Guess);
+
+        Status = BCGame.CheckGuessValidity(Guess);
+        switch (Status) {
+            case EGuessStatus::Not_Isogram:
+                std::cout << "Pleaser enter a word without repeating letters.\n"; return "";
+                break;
+            case EGuessStatus::Wrong_Length:
+                std::cout << "Please enter a " << BCGame.GetHiddenWordLength() << " letter word.\n"; return "";
+                break;
+            case EGuessStatus::Not_Lowercase:
+                std::cout << "Please enter all lowercase letters.\n"; return "";
+            default:
+                return Guess;
+        }
+        std::cout << std::endl;
+    } while (Status != EGuessStatus::OK); //keep looping until we get no errors
     
-    // get the users input
-    std::cout << "Try " << CurrentTry << ". Enter your guess: ";
-    FText Guess = "";
-    getline(std::cin, Guess);
-    BCGame.CheckGuessValidity(Guess);
-    
-    return Guess;
     
 }
 

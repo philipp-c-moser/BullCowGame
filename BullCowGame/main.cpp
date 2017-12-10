@@ -12,7 +12,7 @@ using FText = std::string;
 using int32 = int;
 
 
-
+// Initialize
 void PrintIntro();
 FText GetGuess();
 void PrintGuess(FText GetGuess);

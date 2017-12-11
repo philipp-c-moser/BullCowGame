@@ -86,7 +86,3 @@ FBullCowCount FBullCowGame::SubmitValidGuess(FString Guess)
     
     return BullCowCount;
 }
-
-
-
-
